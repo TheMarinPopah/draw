@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PRO ANIMATOR</title>
+  <title>Draw</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <div id="ui">
     <div class="tool-row">
       <input type="color" id="colorPicker" value="#000000">
       <input type="range" id="sizeSlider" min="1" max="50" value="5" title="Brush Size">
-      <button class="tool-btn" id="eraserBtn" onclick="toggleEraser()">🧽 ERASER: OFF</button>
-      <button class="tool-btn" onclick="undo()">↩️ UNDO</button>
+      <button class="tool-btn" id="eraserBtn">🧽 ERASER: OFF</button>
+      <button class="tool-btn" id="undoBtn">↩️ UNDO</button>
     </div>
     
     <div class="tool-row">
-      <button id="ghostBtn" onclick="toggleGhost()">GHOST: OFF</button>
-      <button class="play-btn" onclick="playAnimation()">▶ PLAY</button>
+      <button id="ghostBtn">GHOST: OFF</button>
+      <button class="play-btn" id="playBtn">▶ PLAY</button>
       <input type="range" id="speedSlider" min="50" max="500" value="100" style="direction: rtl;" title="Speed">
     </div>
 
-    <button class="clear" onclick="clearAll()">RESET PROJECT</button>
+    <button class="clear" id="resetBtn">RESET PROJECT</button>
     <div class="stats">FRAMES: <span id="frameCount">0</span></div>
   </div>
+
   <canvas id="canvas"></canvas>
+  <script src="script.js"></script>
 </body>
 </html>
