@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8">
   <title>Draw</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
   <div id="ui">
     <div class="tool-row">
       <input type="color" id="colorPicker" value="#000000">
@@ -14,18 +13,14 @@
       <button class="tool-btn" id="eraserBtn">🧽 ERASER: OFF</button>
       <button class="tool-btn" id="undoBtn">↩️ UNDO</button>
     </div>
-    
     <div class="tool-row">
       <button id="ghostBtn">GHOST: OFF</button>
       <button class="play-btn" id="playBtn">▶ PLAY</button>
       <input type="range" id="speedSlider" min="50" max="500" value="100" style="direction: rtl;" title="Speed">
     </div>
-
     <button class="clear" id="resetBtn">RESET PROJECT</button>
     <div class="stats">FRAMES: <span id="frameCount">0</span></div>
   </div>
-
-  <canvas id="canvas"></canvas>
-  <script src="scripts.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
