@@ -1,3 +1,4 @@
+alert("JS is connected!");
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const frameCountEl = document.getElementById('frameCount');
