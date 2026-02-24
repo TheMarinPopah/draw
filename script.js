@@ -125,4 +125,9 @@ window.addEventListener('resize', () => {
   const img = new Image();
   img.src = currentImg;
   img.onload = () => ctx.drawImage(img, 0, 0);
+document.getElementById('ghostBtn').addEventListener('click', toggleGhost);
+document.getElementById('eraserBtn').addEventListener('click', toggleEraser);
+document.getElementById('undoBtn').addEventListener('click', undo);
+document.getElementById('resetBtn').addEventListener('click', clearAll);
+document.getElementById('playBtn').addEventListener('click', playAnimation);
 });
