@@ -1,3 +1,8 @@
+window.addEventListener("DOMContentLoaded", function () {
+
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
+  
 alert("JS is connected!");
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -124,6 +129,7 @@ window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   const img = new Image();
+  });
   img.src = currentImg;
   img.onload = () => ctx.drawImage(img, 0, 0);
 });
