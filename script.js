@@ -13,6 +13,7 @@ let isEraser = false;
 let frames = []; 
 let isPlaying = false;
 
+// --- Button functions ---
 function toggleGhost() {
   ghostMode = !ghostMode;
   ghostBtn.innerText = ghostMode ? "GHOST: ON" : "GHOST: OFF";
@@ -60,8 +61,6 @@ function startDrawing(e) {
   drawing = true;
   ctx.beginPath();
   ctx.lineWidth = document.getElementById('sizeSlider').value;
-  
-  // Eraser Logic: Destination-out "cuts" through the drawing
   ctx.globalCompositeOperation = isEraser ? 'destination-out' : 'source-over';
   ctx.strokeStyle = document.getElementById('colorPicker').value;
   ctx.lineCap = 'round';
@@ -84,7 +83,7 @@ function stopDrawing() {
   frameCountEl.innerText = frames.length;
 
   if (ghostMode) {
-    ctx.globalCompositeOperation = 'source-over'; // Reset for ghosting
+    ctx.globalCompositeOperation = 'source-over';
     renderCurrentState();
   }
 }
@@ -114,10 +113,19 @@ function playAnimation() {
   playStep();
 }
 
+// --- Attach button events ONCE ---
+ghostBtn.addEventListener('click', toggleGhost);
+eraserBtn.addEventListener('click', toggleEraser);
+document.getElementById('undoBtn').addEventListener('click', undo);
+document.getElementById('resetBtn').addEventListener('click', clearAll);
+document.getElementById('playBtn').addEventListener('click', playAnimation);
+
+// --- Canvas drawing events ---
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('mousemove', draw);
 window.addEventListener('mouseup', stopDrawing);
 
+// --- Handle window resize ---
 window.addEventListener('resize', () => {
   const currentImg = canvas.toDataURL();
   canvas.width = window.innerWidth;
@@ -125,9 +133,4 @@ window.addEventListener('resize', () => {
   const img = new Image();
   img.src = currentImg;
   img.onload = () => ctx.drawImage(img, 0, 0);
-document.getElementById('ghostBtn').addEventListener('click', toggleGhost);
-document.getElementById('eraserBtn').addEventListener('click', toggleEraser);
-document.getElementById('undoBtn').addEventListener('click', undo);
-document.getElementById('resetBtn').addEventListener('click', clearAll);
-document.getElementById('playBtn').addEventListener('click', playAnimation);
 });
